@@ -124,7 +124,7 @@ resource "aws_instance" "java-node" {
 # Security Group for Python
 # ============================
 resource "aws_security_group" "python_access" {
-  name        = "allow_ssh_http_nginx"
+  name        = "allow_ssh_http_python"
   description = "Allow SSH and HTTP inbound traffic"
 
   ingress {
