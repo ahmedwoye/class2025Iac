@@ -9,16 +9,31 @@ packer {
     }
 }
 
-#-----------------------------------------
-#  source: how we build the AMI for nGINX and GIT
-#-----------------------------------------
+
+
+#-----------------------------------------------
+# source: how we build the AMI For Nginx and GIT 
+#-----------------------------------------------
+
+source "amazon-ebs" "nginx-git" {
+    region = "eu-west-1"
+    instance_type = "t3.micro"
+    ssh_username = "ec2-user"
+    source_ami  = "ami-0870af38096a5355b"
+    ami_name = "nginx-git-by-packer-v2"
+    ami_virtualization_type  = "hvm"
+}
+
+#-------------------------------------------------
+#  source: how we build the AMI for JAVA and GIT
+#-------------------------------------------------
 
 source "amazon-ebs" "java-git" {
     region="eu-west-1"
     instance_type="t3.micro"
     ssh_username="ec2-user"
     source_ami="ami-0870af38096a5355b"
-    ami_name = "nginx_git_by_packer-v2"
+    ami_name = "java_git_by_packer-v2"
     ami_virtualization_type = "hvm"
 }
 
