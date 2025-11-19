@@ -19,7 +19,7 @@ provider "aws" {
 # nginx Instance (Standalone)
 # ============================
 resource "aws_instance" "nginx-node" {
-  ami                    = "ami-0cec7e1189d500542"
+  ami                    = "ami-0db272f9298ea2a02"
   instance_type          = "t3.micro"
   subnet_id              = "subnet-0828482fafcb40dc8"
   vpc_security_group_ids = [aws_security_group.nginx_access.id]
@@ -108,7 +108,7 @@ resource "aws_security_group" "java_access" {
 # Java Instance (Standalone)
 # ============================
 resource "aws_instance" "java-node" {
-  ami                    = "ami-09c1b59b70df408bc"
+  ami                    = "ami-07d7acea2f78c826c"
   instance_type          = "t3.micro"
   subnet_id              = "subnet-0828482fafcb40dc8"
   vpc_security_group_ids = [aws_security_group.java_access.id]
@@ -157,7 +157,7 @@ resource "aws_security_group" "python_access" {
 # Python Instance (Standalone)
 # ============================
 resource "aws_instance" "python-node" {
-  ami                    = "ami-0cec7e1189d500542"
+  ami                    = "ami-0e54ca7889b022a2f"
   instance_type          = "t3.micro"
   subnet_id              = "subnet-0828482fafcb40dc8"
   vpc_security_group_ids = [aws_security_group.python_access.id]
