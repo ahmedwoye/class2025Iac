@@ -20,8 +20,7 @@ pipeline {
     stages {
         stage ('checkout') {
             steps {
-                git branch: 'main', 
-                url: 'https://github.com/ahmedwoye/class2025Iac.git'
+                    checkout scm
             }
         }
         stage ('terraform init') {
