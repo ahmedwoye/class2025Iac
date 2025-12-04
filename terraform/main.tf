@@ -1,9 +1,12 @@
 terraform {
   required_version = ">= 1.6.0"
 
-backend "local" {
-  path= "/tmp/terraform.tfstate"
-}
+  backend "s3" {
+    bucket  = "teachbleat-cicd-state-bucket"
+    key     = "envs/dev/terraform.tfstate"
+    region  = "eu-west-1"
+    encrypt = true
+  }
 
   required_providers {
     aws = {
