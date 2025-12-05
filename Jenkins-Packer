@@ -1,0 +1,61 @@
+ pipeline {
+    agent any 
+    
+    environment {
+        
+        AWS_SECRET_ACCESS_KEY = credentials ('aws-secret-access-key')
+        AWS_ACCESS_KEY_ID = credentials ('aws-access-key-id')
+        AWS_DEFAULT_REGION = 'eu-west-1'
+    }
+    
+    stages {
+        stage ('checkout') {
+            steps {
+                git branch: 'main', 
+                url: 'https://github.com/ahmedwoye/class2025Iac.git'
+            }
+        }
+        stage ('Packer init') {
+            steps {
+                dir ('packer') {
+                    sh ' packer init .'
+                }
+            }
+        }
+
+        stage ('Packer validate') {
+            steps {
+                dir ('packer') {
+                    sh 'packer validate .'
+                }
+            }
+        } 
+
+        stage ('Packer Format') {
+            steps {
+                dir ('packer') {
+                    sh 'packer fmt .'
+                }
+            }
+        } 
+        
+        stage ('Packer Build') {
+            steps {
+                dir ('packer') {
+                    sh 'packer build .'
+                }
+            }
+        } 
+
+    	stage ('Packer Inspect') {
+            steps {
+                dir ('packer') {
+                    sh 'packer inspect .'
+                }
+            }
+        } 
+
+         
+    
+    }
+}
