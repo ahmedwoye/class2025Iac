@@ -40,11 +40,14 @@ resource "aws_instance" "nginx-node" {
 
 
 # ============================
-# Security Group for nginx
+# Web Node Security Group for nginx
 # ============================
 resource "aws_security_group" "nginx_access" {
   name        = "allow_ssh_http_nginx"
   description = "Allow SSH and HTTP inbound traffic"
+
+
+
 
   ingress {
     description = "Allow SSH"
