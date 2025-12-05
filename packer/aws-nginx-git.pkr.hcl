@@ -85,10 +85,6 @@ build  {
     provisioner "shell" {
         inline = [
             "sudo yum update -y",
-            "sudo yum install nginx -y",
-            "sudo systemctl enable nginx",
-            "sudo systemctl start nginx",
-            "echo  '<h1> Hello from Techbleat - Built by Packer </h1>' | sudo tee /usr/share/nginx/html/index.html",
             "sudo yum install git -y"
         ]
     }
@@ -108,10 +104,6 @@ build  {
     provisioner "shell" {
         inline = [
             "sudo yum update -y",
-            "sudo yum install nginx -y",
-            "sudo systemctl enable nginx",
-            "sudo systemctl start nginx",
-            "echo  '<h1> Hello from Techbleat - Java Node Built by Packer </h1>' | sudo tee /usr/share/nginx/html/index.html",
             "sudo yum install java-17-amazon-corretto -y",
             "sudo yum install maven -y",
             "sudo yum install git -y"
@@ -134,10 +126,6 @@ build  {
     provisioner "shell" {
         inline = [
             "sudo yum update -y",
-            "sudo yum install nginx -y",
-            "sudo systemctl enable nginx",
-            "sudo systemctl start nginx",
-            "echo  '<h1> Hello from Techbleat - Python Node Built by Packer </h1>' | sudo tee /usr/share/nginx/html/index.html",
             "sudo yum install git -y"
         ]
     }
