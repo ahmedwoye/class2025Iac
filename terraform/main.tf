@@ -26,11 +26,11 @@ provider "aws" {
 # nginx Instance (Standalone)
 # ============================
 resource "aws_instance" "nginx-node" {
-  ami                    = "ami-0c0a0191c3b4d2f6f"
-  instance_type          = "t3.micro"
-  subnet_id              = "subnet-0828482fafcb40dc8"
+  ami                    = var.project_ami
+  instance_type          = var.project_instance_type
+  subnet_id              = var.project_subnet_id
   vpc_security_group_ids = [aws_security_group.nginx_access.id]
-  key_name               = "October2025"
+  key_name               = var.project_keyname
 
   tags = {
     Name = "terraform-nginx-node"
@@ -45,6 +45,7 @@ resource "aws_instance" "nginx-node" {
 resource "aws_security_group" "nginx_access" {
   name        = "allow_ssh_http_nginx"
   description = "Allow SSH and HTTP inbound traffic"
+  #vpc_id      = var.project_vpc
 
 
 
@@ -118,11 +119,14 @@ resource "aws_security_group" "java_access" {
 # Java Instance (Standalone)
 # ============================
 resource "aws_instance" "java-node" {
-  ami                    = "ami-04c60b2db27e8a280"
-  instance_type          = "t3.micro"
-  subnet_id              = "subnet-0828482fafcb40dc8"
+
+
+  ami                    = var.project_ami
+  instance_type          = var.project_instance_type
+  subnet_id              = var.project_subnet_id
   vpc_security_group_ids = [aws_security_group.java_access.id]
-  key_name               = "October2025"
+  key_name               = var.project_keyname
+
 
   tags = {
     Name = "terraform-java-node"
@@ -167,11 +171,13 @@ resource "aws_security_group" "python_access" {
 # Python Instance (Standalone)
 # ============================
 resource "aws_instance" "python-node" {
-  ami                    = "ami-0b50a5006c88e704a"
-  instance_type          = "t3.micro"
-  subnet_id              = "subnet-0828482fafcb40dc8"
+
+
+  ami                    = var.project_ami
+  instance_type          = var.project_instance_type
+  subnet_id              = var.project_subnet_id
   vpc_security_group_ids = [aws_security_group.python_access.id]
-  key_name               = "October2025"
+  key_name               = var.project_keyname
 
   tags = {
     Name = "terraform-python-node"
